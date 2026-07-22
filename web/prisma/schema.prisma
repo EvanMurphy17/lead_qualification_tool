@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// SQLite for zero-setup local use. To deploy on Postgres, change provider to
+// "postgresql" and point DATABASE_URL at your database, then `prisma db push`.
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  company      String
+  role         String? // Developer / EPC, IPP, Finance, Consultant, Utility, Other
+  phone        String?
+  createdAt    DateTime  @default(now())
+  lastLoginAt  DateTime?
+  loginCount   Int       @default(0)
+}

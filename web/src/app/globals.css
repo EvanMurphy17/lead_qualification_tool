@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/*
+  Brand design tokens — light theme (Outfit/Inter brand kit, July 2026):
+  background #FFFFFF · foreground #0F1115 · muted #404244
+  primary #0B1E3F · accent #94A3B8 · border #DDDEE0
+  Headings: Outfit · Body: Inter (wired via next/font variables)
+*/
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #0f1115;
+  --color-muted: #404244;
+  --color-primary: #0b1e3f;
+  --color-accent: #94a3b8;
+  --color-border: #dddee0;
+
+  --font-heading: var(--font-outfit), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #dddee0 transparent;
+}
+
+/* MapLibre chrome adjustments to match the brand */
+.maplibregl-popup-content {
+  background: #ffffff !important;
+  border: 1px solid #dddee0 !important;
+  border-radius: 6px !important;
+  color: #0f1115 !important;
+  font-family: var(--font-sans);
+  padding: 8px 10px !important;
+  box-shadow: 0 4px 16px rgba(15, 17, 21, 0.15) !important;
+}
+.maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-bottom-color: #dddee0 !important;
+}
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: #dddee0 !important;
+}
+.maplibregl-ctrl-group {
+  background: #ffffff !important;
+  border: 1px solid #dddee0 !important;
+}
+.maplibregl-ctrl-group button {
+  background: #ffffff !important;
+}
+.maplibregl-ctrl-attrib {
+  background: rgba(255, 255, 255, 0.8) !important;
+  font-family: var(--font-sans);
+}
+.maplibregl-ctrl-attrib a {
+  color: #404244 !important;
+}
