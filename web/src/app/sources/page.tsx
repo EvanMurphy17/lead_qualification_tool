@@ -1,6 +1,5 @@
-import fs from "node:fs";
-import path from "node:path";
 import Link from "next/link";
+import statsJson from "../../../public/data/stats.json";
 import { Logo } from "@/components/Logo";
 import { IconExternalLink } from "@/components/icons";
 
@@ -12,14 +11,9 @@ interface Stats {
   programs: { program: string; buildings: number; latest_year: number | null; source: string }[];
 }
 
+// Baked in at build time (Workers have no runtime filesystem).
 function loadStats(): Stats | null {
-  try {
-    return JSON.parse(
-      fs.readFileSync(path.join(process.cwd(), "public", "data", "stats.json"), "utf-8")
-    );
-  } catch {
-    return null;
-  }
+  return statsJson as unknown as Stats;
 }
 
 export default function SourcesPage() {

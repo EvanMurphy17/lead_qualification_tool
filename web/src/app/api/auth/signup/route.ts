@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { getLeadsRepo } from "@/lib/db";
 import { createSession, hashPassword } from "@/lib/auth";
 
 export async function POST(req: Request) {
@@ -27,7 +27,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Name and company are required." }, { status: 400 });
   }
 
-  const existing = await prisma.user.findUnique({ where: { email } });
+  const repo = await getLeadsRepo();
+  const existing = await repo.findByEmail(email);
   if (existing) {
     return NextResponse.json(
       { error: "An account with this email already exists. Try signing in." },
@@ -35,17 +36,13 @@ export async function POST(req: Request) {
     );
   }
 
-  const user = await prisma.user.create({
-    data: {
-      email,
-      passwordHash: await hashPassword(password),
-      name,
-      company,
-      role,
-      phone,
-      lastLoginAt: new Date(),
-      loginCount: 1,
-    },
+  const user = await repo.create({
+    email,
+    passwordHash: await hashPassword(password),
+    name,
+    company,
+    role,
+    phone,
   });
 
   await createSession({ userId: user.id, email: user.email, name: user.name });

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { getLeadsRepo } from "@/lib/db";
 import { getSession, isAdmin } from "@/lib/auth";
 
 /** CSV export of all signups — admin only. */
@@ -9,7 +9,8 @@ export async function GET() {
     return NextResponse.json({ error: "Not authorized" }, { status: 403 });
   }
 
-  const users = await prisma.user.findMany({ orderBy: { createdAt: "desc" } });
+  const repo = await getLeadsRepo();
+  const users = await repo.list();
   const esc = (v: unknown) => {
     if (v == null) return "";
     const s = v instanceof Date ? v.toISOString() : String(v);

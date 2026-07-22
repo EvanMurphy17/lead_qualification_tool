@@ -1,6 +1,5 @@
-import fs from "node:fs";
-import path from "node:path";
 import Link from "next/link";
+import statsJson from "../../public/data/stats.json";
 import { APP_NAME, COMPANY, TAGLINE } from "@/lib/brand";
 import { getSession } from "@/lib/auth";
 import { Logo } from "@/components/Logo";
@@ -23,13 +22,10 @@ interface Stats {
   states: Record<string, number>;
 }
 
+// Baked in at build time (Workers have no runtime filesystem) — rebuild after
+// refreshing the data pipeline.
 function loadStats(): Stats | null {
-  try {
-    const p = path.join(process.cwd(), "public", "data", "stats.json");
-    return JSON.parse(fs.readFileSync(p, "utf-8"));
-  } catch {
-    return null;
-  }
+  return statsJson as unknown as Stats;
 }
 
 function StatTile({ value, label }: { value: string; label: string }) {

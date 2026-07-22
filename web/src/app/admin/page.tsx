@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { prisma } from "@/lib/db";
+import { getLeadsRepo } from "@/lib/db";
 import { getSession, isAdmin } from "@/lib/auth";
 import { Logo } from "@/components/Logo";
 import { IconDownload } from "@/components/icons";
@@ -13,7 +13,8 @@ export default async function AdminPage() {
   if (!session) redirect("/login?next=/admin");
   if (!isAdmin(session.email)) redirect("/explore");
 
-  const users = await prisma.user.findMany({ orderBy: { createdAt: "desc" } });
+  const repo = await getLeadsRepo();
+  const users = await repo.list();
 
   return (
     <main className="flex flex-col">
