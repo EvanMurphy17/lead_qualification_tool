@@ -70,6 +70,26 @@ ACTIVE: dict[str, tuple[str, str]] = {
         "nyc_LL84_2022_present.csv",
         "https://data.cityofnewyork.us/api/views/5zyy-y8am/rows.csv?accessType=DOWNLOAD",
     ),
+    # San Jose — CY2024 (kWh + therms).
+    "sanjose": (
+        "sanjose_cy2024.csv",
+        "https://data.sanjoseca.gov/dataset/ee0e571c-5007-4330-b3df-01ee5bdc91d3/resource/f7723c73-8ee3-43cd-9a3e-a8761cc29905/download/cy-2024-public-data.csv",
+    ),
+    # Berkeley BESO — wide file, per-year columns (kWh/therms 2022-2025).
+    "berkeley": (
+        "berkeley_beso.csv",
+        "https://data.cityofberkeley.info/api/views/5vy5-rwja/rows.csv?accessType=DOWNLOAD",
+    ),
+    # Portland OR — CY2024 XLSX (kWh incl. onsite solar generation).
+    "portland": (
+        "portland_or_2024.xlsx",
+        "https://www.portland.gov/bps/climate-action/energy-reporting/documents/2024-energy-performance-information-individual/download",
+    ),
+    # Honolulu — Google Sheet CSV export (kWh split grid/renewable; title row).
+    "honolulu": (
+        "honolulu_benchmarking.csv",
+        "https://docs.google.com/spreadsheets/d/19LLr6caOxbbSmRoxcIlkHdswdhkNGQmp/export?format=csv",
+    ),
 }
 
 # ---------------------------------------------------------------------------
@@ -86,14 +106,13 @@ Not yet integrated (each needs a browser pull or a new column mapping):
                   Latest final Excel (2023): https://www.arcgis.com/sharing/rest/content/items/2da57c7e046b4daa97daf0052d7e7825/data
   NYC monthly     Building-level MONTHLY electric+gas (great for load shape):
                   dataset fvp3-gcb2 on data.cityofnewyork.us
-  Massachusetts   Statewide LBER (every building >=20k sqft, CY2024) — likely the
-                  single biggest addition; mass.gov blocks scripts, download in a
-                  browser: https://www.mass.gov/info-details/large-building-energy-reporting-results
-  San Jose        CY2024 kWh+therms: https://data.sanjoseca.gov/dataset/ee0e571c-5007-4330-b3df-01ee5bdc91d3/resource/f7723c73-8ee3-43cd-9a3e-a8761cc29905/download/cy-2024-public-data.csv
-  Berkeley        BESO kWh/therms: https://data.cityofberkeley.info/api/views/5vy5-rwja/rows.csv?accessType=DOWNLOAD
-  Portland OR     CY2024 XLSX (kWh incl. onsite solar): https://www.portland.gov/bps/climate-action/energy-reporting/documents/2024-energy-performance-information-individual/download
-  Honolulu        ~800 bldgs, kWh split grid/renewable (Google Sheet CSV export):
-                  https://docs.google.com/spreadsheets/d/19LLr6caOxbbSmRoxcIlkHdswdhkNGQmp/export?format=csv
+  Massachusetts   Statewide LBER, 33,561 covered properties (July 2026). Public
+                  SEED map at largebuildingreporting.mass.gov exposes only
+                  ids+coordinates anonymously:
+                  /map/inventory_locations/properties/?cycle=3&organization_id=2&page=1&per_page=9999999
+                  Attribute/inventory APIs (POST /api/v3/properties/filter/) return
+                  403 without an org account. ACTION: request the dataset or portal
+                  access from DOER (see mass.gov LBER results page).
   Minnesota       Statewide program, map only so far: https://map.benchmarkingmn.org/
   LA / KC / Orlando  EUI-only (no kWh/gas split) — lower value:
                   LA https://data.lacity.org/api/views/9yda-i4ya/rows.csv?accessType=DOWNLOAD
