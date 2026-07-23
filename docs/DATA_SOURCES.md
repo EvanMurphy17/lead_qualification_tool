@@ -45,6 +45,23 @@ Washington State CBPS, Colorado, Maryland BEPS, New Jersey, Oregon.
 two years (IMT-coordinated National BPS Coalition) — recurring pipeline of new
 sources.
 
+## 2b. BPD contributor list → primary sources (mapped July 22, 2026)
+
+LBNL's BPD data-source filter is a map of where building-level data exists.
+Status of every named contributor relative to Loadstone:
+
+| BPD source | Primary source status |
+|---|---|
+| NYC LL84, Philadelphia, San Francisco, Seattle, Washington DC, Boston, CA AB 802, Cambridge, Chicago, Denver, Montgomery Co. | **Already integrated** (we pull the primary portals directly) |
+| Portland OR, San Jose, Berkeley, Los Angeles (EUI-only), Kansas City (EUI-only), Orlando (EUI-only) | Endpoints documented in `scripts/fetch_data.py` — ready to add |
+| **NYC LL87 energy audits** | **New find:** 10,702 building audits, kWh/therms + equipment detail, public XLSX at https://data.cityofnewyork.us/Environment/LL87-Energy-Audit-Data/au6c-jqvf — best enrichment source for NYC leads |
+| Syracuse NY | Public CSV but one-time 2017 snapshot, 141 buildings (kWh+therms): https://data-syr.opendata.arcgis.com/datasets/71c5e0719dd14a86bd8378ace525e7c5_0 — marginal |
+| NEEA CBSA | Anonymized 932-building statistical sample (utility billing data) behind free registration + no-redistribution agreement — reference/calibration only, not leads |
+| Portland ME, Brisbane CA, Hennepin Co. MN, Miami, Atlanta, Evanston | Web map / interactive portal only, no verified bulk download (Hennepin superseded by MN statewide) |
+| Austin TX | Primary data stale (2014/2016 only) |
+| CA Prop 39 K-12, NY RSBS, Fannie Mae survey, Gainesville | No public building-level energy microdata |
+| "Anonymous" (291K records) | Confidential contributions — accessible only as BPD aggregates, never as records |
+
 ## 3. Complementary datasets (top picks for this tool)
 
 > **Status (July 22, 2026):** four integrations shipped — EIA state retail rates
