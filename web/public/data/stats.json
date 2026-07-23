@@ -1,0 +1,144 @@
+{
+ "generated": "2026-07-23",
+ "buildings": 92710,
+ "with_coords": 91422,
+ "total_annual_kwh": 116069318173.7173,
+ "total_sqft": 12772452602.099998,
+ "programs": [
+  {
+   "program": "Berkeley",
+   "buildings": 528,
+   "latest_year": 2024,
+   "with_coords": 498,
+   "source": "https://data.cityofberkeley.info/Energy-and-Environment/BESO-Large-Building-Energy-Data-and-Compliance-Sta/5vy5-rwja"
+  },
+  {
+   "program": "Boston",
+   "buildings": 5126,
+   "latest_year": 2024,
+   "with_coords": 4734,
+   "source": "https://data.boston.gov/dataset/building-emissions-reduction-and-disclosure-ordinance"
+  },
+  {
+   "program": "California",
+   "buildings": 25551,
+   "latest_year": 2024,
+   "with_coords": 25551,
+   "source": "https://www.energy.ca.gov/data-reports/reports/building-energy-benchmarking-program"
+  },
+  {
+   "program": "Cambridge",
+   "buildings": 902,
+   "latest_year": 2024,
+   "with_coords": 902,
+   "source": "https://data.cambridgema.gov/Energy-and-the-Environment/Cambridge-Building-Energy-Use-Disclosure-Ordinance/72g6-j7aq"
+  },
+  {
+   "program": "Chicago",
+   "buildings": 3852,
+   "latest_year": 2023,
+   "with_coords": 3849,
+   "source": "https://data.cityofchicago.org/Environment-Sustainable-Development/Chicago-Energy-Benchmarking/xq83-jr8c"
+  },
+  {
+   "program": "Denver",
+   "buildings": 3130,
+   "latest_year": 2024,
+   "with_coords": 3012,
+   "source": "https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Climate-Action-Sustainability-Resiliency/High-Performance-Buildings-and-Homes/Energize-Denver-Hub"
+  },
+  {
+   "program": "Honolulu",
+   "buildings": 800,
+   "latest_year": 2025,
+   "with_coords": 766,
+   "source": "https://www.resilientoahu.org/benchmarking"
+  },
+  {
+   "program": "Montgomery County",
+   "buildings": 1864,
+   "latest_year": 2025,
+   "with_coords": 1704,
+   "source": "https://data.montgomerycountymd.gov/Environment/2024-Energy-Benchmarking-All-Sites/g6nn-rgwc"
+  },
+  {
+   "program": "New York City",
+   "buildings": 36127,
+   "latest_year": 2023,
+   "with_coords": 35699,
+   "source": "https://data.cityofnewyork.us/Environment/NYC-Building-Energy-and-Water-Data-Disclosure-for-/5zyy-y8am"
+  },
+  {
+   "program": "Philadelphia",
+   "buildings": 1625,
+   "latest_year": 2024,
+   "with_coords": 1625,
+   "source": "https://opendataphilly.org/datasets/large-building-energy-benchmarking-data/"
+  },
+  {
+   "program": "Portland OR",
+   "buildings": 918,
+   "latest_year": 2024,
+   "with_coords": 879,
+   "source": "https://www.portland.gov/bps/energy-reporting/annual-data-and-results"
+  },
+  {
+   "program": "San Francisco",
+   "buildings": 2494,
+   "latest_year": 2025,
+   "with_coords": 2494,
+   "source": "https://data.sfgov.org/Energy-and-Environment/Existing-Buildings-Benchmark-Reports/4ua7-5sfx"
+  },
+  {
+   "program": "San Jose",
+   "buildings": 1785,
+   "latest_year": 2025,
+   "with_coords": 1702,
+   "source": "https://data.sanjoseca.gov/dataset/building-performance-ordinance"
+  },
+  {
+   "program": "Seattle",
+   "buildings": 3764,
+   "latest_year": 2023,
+   "with_coords": 3764,
+   "source": "https://data.seattle.gov/Built-Environment/Building-Energy-Benchmarking-Data-2015-Present/teqw-tu6e"
+  },
+  {
+   "program": "Washington DC",
+   "buildings": 4244,
+   "latest_year": 2023,
+   "with_coords": 4243,
+   "source": "https://opendata.dc.gov/datasets/DCGIS%3A%3Abuilding-energy-benchmarking/about"
+  }
+ ],
+ "sectors": {
+  "Multifamily": 42737,
+  "Office": 10850,
+  "Warehouse / Distribution": 7901,
+  "Other / Unknown": 6834,
+  "K-12 School": 5588,
+  "Retail": 3805,
+  "Hotel": 3362,
+  "Hospital / Healthcare": 3178,
+  "Public Assembly": 2544,
+  "Industrial / Manufacturing": 1689,
+  "College / University": 1634,
+  "Grocery": 1291,
+  "Public Services": 561,
+  "Parking": 546,
+  "Data Center": 190
+ },
+ "states": {
+  "NY": 36127,
+  "CA": 30358,
+  "MA": 6028,
+  "DC": 4244,
+  "IL": 3852,
+  "WA": 3764,
+  "CO": 3130,
+  "MD": 1864,
+  "PA": 1625,
+  "OR": 918,
+  "HI": 800
+ }
+}
