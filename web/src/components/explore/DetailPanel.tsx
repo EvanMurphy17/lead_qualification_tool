@@ -6,6 +6,7 @@ import { fmtFixed, fmtInt, fmtKwh } from "@/lib/format";
 import {
   IconBarChart,
   IconBattery,
+  IconDownload,
   IconExternalLink,
   IconGlobe,
   IconLoader,
@@ -267,6 +268,16 @@ export function DetailPanel({
               battery at 30–50% of annual peak; CO₂ from the {b.state ?? "state"} grid mix (eGRID).
               Rough screening only.
             </p>
+            {!preview && b.lat != null && b.lon != null && (
+              <a
+                href={`/api/loadprofile?lat=${b.lat}&lon=${b.lon}&annualKwh=${b.elecKwh}&sector=${encodeURIComponent(b.sector)}&label=${encodeURIComponent((b.name ?? b.address ?? "building").slice(0, 40))}`}
+                className="mt-3 flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors"
+                download
+              >
+                <IconDownload size={15} />
+                Download 8760 hourly load profile (CSV)
+              </a>
+            )}
           </section>
         )}
 
@@ -278,8 +289,9 @@ export function DetailPanel({
                 REopt techno-economic screening
               </h4>
               <p className="mb-2 text-xs leading-snug text-muted">
-                Run NLR&apos;s REopt optimizer on any building: optimal PV + battery size,
-                NPV, and payback. Free with an account.
+                Run NLR&apos;s REopt optimizer on any building (optimal PV + battery size,
+                NPV, and payback) and download a scaled 8760 load profile. Free with an
+                account.
               </p>
               <a
                 href="/signup?next=/explore"

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
+import { DOE_REF, DEFAULT_DOE_REF } from "@/lib/doeRef";
 
 /**
  * On-demand REopt v3 screening for a selected building.
@@ -11,23 +12,6 @@ import { getSession } from "@/lib/auth";
  */
 
 const BASE = "https://developer.nlr.gov/api/reopt/stable";
-
-const DOE_REF: Record<string, string> = {
-  "Office": "LargeOffice",
-  "Retail": "RetailStore",
-  "Grocery": "SuperMarket",
-  "Warehouse / Distribution": "Warehouse",
-  "Industrial / Manufacturing": "FlatLoad",
-  "Hospital / Healthcare": "Hospital",
-  "Hotel": "LargeHotel",
-  "K-12 School": "SecondarySchool",
-  "College / University": "LargeOffice",
-  "Multifamily": "MidriseApartment",
-  "Data Center": "FlatLoad",
-  "Public Assembly": "MediumOffice",
-  "Public Services": "MediumOffice",
-  "Parking": "FlatLoad",
-};
 
 function apiKey(): string | null {
   return process.env.NLR_API_KEY || null;
@@ -63,7 +47,7 @@ export async function POST(req: Request) {
   const payload = {
     Site: { latitude: lat, longitude: lon },
     ElectricLoad: {
-      doe_reference_name: DOE_REF[sector] ?? "MediumOffice",
+      doe_reference_name: DOE_REF[sector] ?? DEFAULT_DOE_REF,
       annual_kwh: annualKwh,
     },
     ElectricTariff: {

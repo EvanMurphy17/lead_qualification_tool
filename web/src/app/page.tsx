@@ -88,10 +88,10 @@ export default async function Home() {
           {TAGLINE}.
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted">
-          {APP_NAME}{" "}maps the publicly disclosed energy use of {nBuildings} commercial
-          buildings. Developers use it to find and qualify solar and storage opportunities.
-          Building owners use it to look up their own property and see what a system could
-          be worth. Free to use, with no pitch attached.
+          Fifteen disclosure programs, one searchable map. Filter {nBuildings} commercial
+          buildings by usage, size, and sector. Open any building for cost and system
+          estimates, REopt economics, and a downloadable 8760 load profile scaled to its
+          reported use.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
@@ -128,39 +128,40 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Two ways to use it */}
+      {/* Capabilities */}
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
-        <h2 className="text-2xl md:text-3xl">Two ways to use it</h2>
+        <h2 className="text-2xl md:text-3xl">What it does</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <Card>
             <IconFilter className="text-primary" size={24} />
-            <h3 className="mt-4 text-lg">Find your next project</h3>
+            <h3 className="mt-4 text-lg">Explore</h3>
             <p className="mt-2 text-sm text-muted leading-relaxed">
-              Screen buildings by annual kWh, sector, floor area, and estimated spend. Map
-              a territory, shortlist the biggest loads, and export the list to your CRM.
-              Built for developers, EPCs, and originators.
+              Map and database views over every building, filterable by annual kWh,
+              sector, floor area, and estimated spend. Export any filtered list to CSV.
             </p>
           </Card>
           <Card>
             <IconSun className="text-primary" size={24} />
-            <h3 className="mt-4 text-lg">Price your own building</h3>
+            <h3 className="mt-4 text-lg">Look closer</h3>
             <p className="mt-2 text-sm text-muted leading-relaxed">
-              Own or operate one of these buildings? Look it up to see the energy use it
-              already reports publicly, roughly what that costs each year, and what a
-              right-sized solar and battery system could return.
+              Open any building for its reported usage, estimated annual cost, grid
+              emissions, and a PV estimate sized with local solar yields.
             </p>
           </Card>
           <Card>
             <IconLayers className="text-primary" size={24} />
-            <h3 className="mt-4 text-lg">Under the hood</h3>
+            <h3 className="mt-4 text-lg">Run the numbers</h3>
             <p className="mt-2 text-sm text-muted leading-relaxed">
-              Fifteen public disclosure programs, cleaned and geocoded, joined with EIA
-              rates, eGRID emissions factors, PVWatts solar yields, and REopt sizing. If
-              you want this kind of analysis on your own portfolio, that is what{" "}
-              {COMPANY} does.
+              One click sends a building through NREL&apos;s REopt optimizer for system
+              size, NPV, and payback. Download an 8760 hourly load profile scaled to its
+              reported use for your own modeling.
             </p>
           </Card>
         </div>
+        <p className="mt-6 max-w-2xl text-sm text-muted">
+          Scout a market, sanity-check a lead before the first call, or look up a building
+          you already know.
+        </p>
       </section>
 
       {/* Coverage */}
@@ -204,10 +205,10 @@ export default async function Home() {
       {/* CTA */}
       <section className="border-t border-border">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-4 px-6 py-16">
-          <h2 className="text-2xl md:text-3xl max-w-2xl">Free to use. No catch.</h2>
+          <h2 className="text-2xl md:text-3xl max-w-2xl">Have a building in mind?</h2>
           <p className="max-w-2xl text-muted">
-            {APP_NAME} is a small tool from {COMPANY}, built to show what public energy
-            data can do. If it helps you find a project or price one, it has done its job.
+            {APP_NAME} is free, from the team at {COMPANY}. The preview is open right now;
+            an account gets you the full database.
           </p>
           <Link
             href="/explore"
