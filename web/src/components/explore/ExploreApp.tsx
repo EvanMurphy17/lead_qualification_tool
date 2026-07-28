@@ -84,17 +84,17 @@ export function ExploreApp({ preview }: { preview: boolean }) {
       {preview && (
         <div className="flex shrink-0 flex-wrap items-center justify-center gap-x-2 gap-y-1 border-b border-border bg-primary px-4 py-2 text-center text-sm text-background">
           <span>
-            Free preview — the{" "}
+            Free preview: the{" "}
             <span className="font-heading font-semibold">{fmtInt(dataset.buildings.length)}</span>{" "}
             biggest energy users of{" "}
             <span className="font-heading font-semibold">{fmtInt(dataset.fullCount)}</span>{" "}
-            buildings in the full database.
+            buildings. Looking for yours?
           </span>
           <Link
             href="/signup?next=/explore"
             className="inline-flex items-center gap-1 font-semibold underline underline-offset-2 hover:text-accent transition-colors"
           >
-            Create a free account for everything
+            Create a free account for the full database
             <IconArrowRight size={14} />
           </Link>
         </div>
@@ -138,7 +138,7 @@ export function ExploreApp({ preview }: { preview: boolean }) {
                 title="CSV export is free with an account"
               >
                 <IconLock size={14} />
-                Export CSV — sign up
+                Export CSV (sign up)
               </Link>
             ) : (
               <button

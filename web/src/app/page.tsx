@@ -7,9 +7,9 @@ import { Card } from "@/components/ui";
 import {
   IconArrowRight,
   IconDatabase,
-  IconDownload,
   IconFilter,
-  IconMap,
+  IconLayers,
+  IconSun,
 } from "@/components/icons";
 
 interface Stats {
@@ -22,7 +22,7 @@ interface Stats {
   states: Record<string, number>;
 }
 
-// Baked in at build time (Workers have no runtime filesystem) — rebuild after
+// Baked in at build time (Workers have no runtime filesystem). Rebuild after
 // refreshing the data pipeline.
 function loadStats(): Stats | null {
   return statsJson as unknown as Stats;
@@ -43,6 +43,7 @@ export default async function Home() {
   const twh = stats ? (stats.total_annual_kwh / 1e9).toFixed(0) : "—";
   const sqftB = stats ? (stats.total_sqft / 1e9).toFixed(1) : "—";
   const nStates = stats ? Object.keys(stats.states).length : 0;
+  const nBuildings = stats ? stats.buildings.toLocaleString() : "";
 
   return (
     <main className="flex flex-col">
@@ -81,16 +82,16 @@ export default async function Home() {
       {/* Hero */}
       <section className="mx-auto w-full max-w-6xl px-6 pt-20 pb-16">
         <p className="mb-4 font-heading text-sm text-muted">
-          {stats ? `${stats.buildings.toLocaleString()} buildings · updated ${stats.generated}` : ""}
+          {stats ? `${nBuildings} buildings · updated ${stats.generated}` : ""}
         </p>
         <h1 className="max-w-3xl text-4xl md:text-6xl leading-tight">
           {TAGLINE}.
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted">
-          {APP_NAME}{" "}turns public building energy benchmarking disclosures into a lead
-          qualification tool for C&amp;I solar and storage developers. Filter by state, sector,
-          size, and annual electricity usage — on a map or in a database — and export your
-          target list.
+          {APP_NAME}{" "}maps the publicly disclosed energy use of {nBuildings} commercial
+          buildings. Developers use it to find and qualify solar and storage opportunities.
+          Building owners use it to look up their own property and see what a system could
+          be worth. Free to use, with no pitch attached.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
@@ -111,8 +112,8 @@ export default async function Home() {
         </div>
         {!session && (
           <p className="mt-3 text-sm text-muted">
-            No signup needed for the preview — full database, CSV export, and REopt runs are
-            free with an account.
+            The preview needs no signup. A free account unlocks the full database, CSV
+            export, and REopt runs.
           </p>
         )}
       </section>
@@ -127,32 +128,36 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* How it works */}
+      {/* Two ways to use it */}
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
-        <h2 className="text-2xl md:text-3xl">Built for prospecting, not compliance</h2>
+        <h2 className="text-2xl md:text-3xl">Two ways to use it</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <Card>
             <IconFilter className="text-primary" size={24} />
-            <h3 className="mt-4 text-lg">Qualify</h3>
+            <h3 className="mt-4 text-lg">Find your next project</h3>
             <p className="mt-2 text-sm text-muted leading-relaxed">
-              Screen by annual kWh, floor area, sector, and peak demand. A 2 GWh/yr warehouse
-              with a flat roof is a different conversation than a 200 MWh office floor.
+              Screen buildings by annual kWh, sector, floor area, and estimated spend. Map
+              a territory, shortlist the biggest loads, and export the list to your CRM.
+              Built for developers, EPCs, and originators.
             </p>
           </Card>
           <Card>
-            <IconMap className="text-primary" size={24} />
-            <h3 className="mt-4 text-lg">Map</h3>
+            <IconSun className="text-primary" size={24} />
+            <h3 className="mt-4 text-lg">Price your own building</h3>
             <p className="mt-2 text-sm text-muted leading-relaxed">
-              See every qualifying building on a map, colored by annual electricity usage.
-              Cluster your outreach by neighborhood, feeder, or utility territory.
+              Own or operate one of these buildings? Look it up to see the energy use it
+              already reports publicly, roughly what that costs each year, and what a
+              right-sized solar and battery system could return.
             </p>
           </Card>
           <Card>
-            <IconDownload className="text-primary" size={24} />
-            <h3 className="mt-4 text-lg">Export</h3>
+            <IconLayers className="text-primary" size={24} />
+            <h3 className="mt-4 text-lg">Under the hood</h3>
             <p className="mt-2 text-sm text-muted leading-relaxed">
-              Download any filtered list as CSV — addresses, owners where disclosed, usage,
-              and intensity — ready for your CRM or site-screening workflow.
+              Fifteen public disclosure programs, cleaned and geocoded, joined with EIA
+              rates, eGRID emissions factors, PVWatts solar yields, and REopt sizing. If
+              you want this kind of analysis on your own portfolio, that is what{" "}
+              {COMPANY} does.
             </p>
           </Card>
         </div>
@@ -166,7 +171,7 @@ export default async function Home() {
             <h2 className="text-2xl md:text-3xl">Coverage</h2>
           </div>
           <p className="mt-3 max-w-2xl text-muted">
-            Every record comes from a public benchmarking disclosure — buildings that are
+            Every record comes from a public benchmarking disclosure. These are buildings
             already required to report their energy use.
           </p>
           <div className="mt-8 overflow-x-auto rounded-md border border-border">
@@ -198,15 +203,17 @@ export default async function Home() {
 
       {/* CTA */}
       <section className="border-t border-border">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-6 px-6 py-16">
-          <h2 className="text-2xl md:text-3xl max-w-2xl">
-            Free to use. Sign up and start building your pipeline.
-          </h2>
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-4 px-6 py-16">
+          <h2 className="text-2xl md:text-3xl max-w-2xl">Free to use. No catch.</h2>
+          <p className="max-w-2xl text-muted">
+            {APP_NAME} is a small tool from {COMPANY}, built to show what public energy
+            data can do. If it helps you find a project or price one, it has done its job.
+          </p>
           <Link
-            href={session ? "/explore" : "/signup"}
-            className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-background hover:bg-accent hover:text-foreground transition-colors"
+            href="/explore"
+            className="mt-2 inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-background hover:bg-accent hover:text-foreground transition-colors"
           >
-            {session ? "Open the explorer" : "Get free access"}
+            {session ? "Open the explorer" : "Try the live preview"}
             <IconArrowRight size={18} />
           </Link>
         </div>
@@ -216,7 +223,7 @@ export default async function Home() {
       <footer className="border-t border-border">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-muted md:flex-row md:items-center md:justify-between">
           <span>
-            {APP_NAME} — built by {COMPANY}
+            {APP_NAME}, built by {COMPANY}
           </span>
           <span>
             Public data, provided as-is for screening purposes.{" "}

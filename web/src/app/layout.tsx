@@ -16,8 +16,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: `${APP_NAME} — ${TAGLINE}`,
-  description: `${APP_NAME} by ${COMPANY}: identify commercial & industrial solar and storage opportunities from public building energy benchmarking data. Map and database views over 88,000+ buildings.`,
+  title: `${APP_NAME}: ${TAGLINE}`,
+  description: `${APP_NAME} by ${COMPANY}: qualify commercial solar and storage opportunities, or look up what clean energy could be worth on your own building. Free map and database views over 92,000 buildings of public energy data.`,
 };
 
 export default function RootLayout({

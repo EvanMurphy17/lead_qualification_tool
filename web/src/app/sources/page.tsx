@@ -32,7 +32,7 @@ export default function SourcesPage() {
       <div className="mx-auto w-full max-w-4xl px-6 py-12">
         <h1 className="text-3xl">Data sources &amp; methodology</h1>
         <p className="mt-4 max-w-2xl text-muted leading-relaxed">
-          Every record comes from a public building energy benchmarking disclosure — datasets
+          Every record comes from a public building energy benchmarking disclosure: datasets
           that cities and states publish under their benchmarking and building performance
           ordinances. We merge them into one canonical schema, normalize units (electricity to
           kWh, gas to kBtu), and keep each building&apos;s most recent reported year.
@@ -100,7 +100,7 @@ export default function SourcesPage() {
             Estimates: annual spend uses EIA average state retail rates by sector (EPM Table
             5.6.A); CO₂ uses EPA eGRID state output emission rates; PV sizing uses PVWatts v8
             local yield where computed, else state means. REopt runs use DOE reference load
-            shapes scaled to reported kWh with a blended tariff — directional only.
+            shapes scaled to reported kWh with a blended tariff, directional only.
           </li>
           <li>
             Physically implausible reported values (unit errors in self-reported disclosures)

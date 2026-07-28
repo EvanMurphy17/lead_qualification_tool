@@ -26,7 +26,7 @@ export async function GET() {
       const obj = await (env.DATA as R2BucketLike).get("buildings.json.gz");
       if (!obj) {
         return NextResponse.json(
-          { error: "Dataset missing in R2 — upload with: wrangler r2 object put loadstone-data/buildings.json.gz --file private-data/buildings.json.gz --remote" },
+          { error: "Dataset missing in R2. Upload with: wrangler r2 object put loadstone-data/buildings.json.gz --file private-data/buildings.json.gz --remote" },
           { status: 500 }
         );
       }
@@ -43,7 +43,7 @@ export async function GET() {
     return new NextResponse(new Uint8Array(buf), { headers });
   } catch {
     return NextResponse.json(
-      { error: "Dataset missing on server — run python scripts/build_web_dataset.py" },
+      { error: "Dataset missing on server. Run python scripts/build_web_dataset.py" },
       { status: 500 }
     );
   }

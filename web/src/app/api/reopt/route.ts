@@ -83,7 +83,7 @@ export async function POST(req: Request) {
   if (!res.ok || !json.run_uuid) {
     const detail =
       res.status === 429
-        ? "NLR API rate limit hit (DEMO_KEY allows only a few runs/hour — get a free key at developer.nlr.gov)."
+        ? "NLR API rate limit hit (DEMO_KEY allows only a few runs/hour; get a free key at developer.nlr.gov)."
         : (json.messages ? JSON.stringify(json.messages).slice(0, 300) : `REopt returned ${res.status}`);
     return NextResponse.json({ error: detail }, { status: 502 });
   }

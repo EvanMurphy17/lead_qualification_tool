@@ -1,7 +1,7 @@
 /** App identity — rename the product here and it changes everywhere. */
 export const APP_NAME = "Loadstone";
 export const COMPANY = "Alpengrid Analytics";
-export const TAGLINE = "Find your next C&I solar + storage customer";
+export const TAGLINE = "See what clean energy is worth on any commercial building";
 export const CONTACT_EMAIL = "ap@alpengridanalytics.com";
 
 /** Brand palette (mirrors the CSS tokens for use in canvas/map contexts). */

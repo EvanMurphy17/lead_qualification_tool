@@ -5,7 +5,7 @@ import { getSession, isAdmin } from "@/lib/auth";
 import { Logo } from "@/components/Logo";
 import { IconDownload } from "@/components/icons";
 
-export const metadata = { title: "Admin — signups" };
+export const metadata = { title: "Admin: signups" };
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
@@ -32,8 +32,8 @@ export default async function AdminPage() {
           <div>
             <h1 className="text-2xl">Signups</h1>
             <p className="mt-1 text-sm text-muted">
-              <span className="font-heading text-foreground">{users.length}</span> accounts —
-              your follow-up list.
+              <span className="font-heading text-foreground">{users.length}</span> accounts.
+              Your follow-up list.
             </p>
           </div>
           <a

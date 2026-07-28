@@ -88,7 +88,7 @@ function ReoptSection({ building: b }: { building: Building }) {
         }
         if (pj.status === "error") throw new Error(pj.error ?? "REopt could not solve this site.");
       }
-      throw new Error("REopt timed out — try again later.");
+      throw new Error("REopt timed out. Try again later.");
     } catch (e) {
       if (abortRef.current) return;
       setError(e instanceof Error ? e.message : String(e));
@@ -158,7 +158,7 @@ function ReoptSection({ building: b }: { building: Building }) {
           />
           <p className="mt-2 text-[11px] leading-snug text-muted">
             REopt v3 with default costs/incentives, DOE reference load shape, and a blended
-            tariff — directional only; rerun with the real tariff and interval data to refine.
+            tariff. Directional only; rerun with the real tariff and interval data to refine.
           </p>
         </>
       )}
@@ -278,7 +278,7 @@ export function DetailPanel({
                 REopt techno-economic screening
               </h4>
               <p className="mb-2 text-xs leading-snug text-muted">
-                Run NLR&apos;s REopt optimizer on any building — optimal PV + battery size,
+                Run NLR&apos;s REopt optimizer on any building: optimal PV + battery size,
                 NPV, and payback. Free with an account.
               </p>
               <a

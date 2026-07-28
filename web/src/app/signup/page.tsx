@@ -18,8 +18,7 @@ export default async function SignupPage() {
         <Card className="p-6">
           <h1 className="text-xl mb-1">Create your free account</h1>
           <p className="text-sm text-muted mb-5">
-            Full access to the map and database is free — we just want to know who&apos;s
-            exploring.
+            Everything is free. An account just tells us who&apos;s finding it useful.
           </p>
           <Suspense>
             <AuthForm mode="signup" />

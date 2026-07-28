@@ -50,7 +50,7 @@ export default async function ExploreLayout({ children }: { children: React.Reac
                 href="/signup?next=/explore"
                 className="rounded-md bg-primary px-4 py-2 font-semibold text-background hover:bg-accent hover:text-foreground transition-colors"
               >
-                Get full access — free
+                Get full access, free
               </Link>
             </>
           )}
